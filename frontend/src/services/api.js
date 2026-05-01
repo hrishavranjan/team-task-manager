@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://team-task-manager-48k6.onrender.com/"
+  baseURL: "https://team-task-manager-48k6.onrender.com/api" // ✅ FIXED
 });
 
 // 🔥 Attach token to every request
