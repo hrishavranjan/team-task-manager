@@ -5,8 +5,17 @@ require("dotenv").config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// ✅ FIXED CORS
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://team-task-manager-two-zeta.vercel.app",
+    ],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // MongoDB Connection
@@ -19,8 +28,6 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/projects", require("./routes/projectRoutes"));
 app.use("/api/tasks", require("./routes/taskRoutes"));
 app.use("/api/dashboard", require("./routes/dashboardRoutes"));
-
-// 🔥 ADD THIS (IMPORTANT)
 app.use("/api/users", require("./routes/userRoutes"));
 
 // Test Route
